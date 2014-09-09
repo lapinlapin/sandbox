@@ -1,0 +1,12 @@
+.options
+{
+    width: 25%;
+    height: 700px;
+    border-right: 1px solid #ccc;
+}
+
+.options .input_theme_normal
+{
+    margin: 10px 0 0 2%;
+    width: 96%;
+}
