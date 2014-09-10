@@ -1,0 +1,35 @@
+block('tabs') (
+    tag()('ul'),
+    content()(function() {
+        var tabs = [],
+            content = [];
+
+        tabs.push(this.ctx.content.map(function(elem, i) {
+            content.push({
+                block : 'content',
+                tag : 'li',
+                attrs : { id : elem.title },
+                content : i
+            });
+
+            return {
+                elem : 'tab',
+                tag : 'li',
+                content : {
+                    elem : 'link',
+                    tag : 'a',
+                    attrs : { 'href' : '#' + elem.title },
+                    content : elem.title
+                }
+            }
+        }));
+
+        tabs.push({
+            block : 'tabContent',
+            tag : 'ul',
+            content : content
+        });
+
+        return tabs;
+    })
+)
