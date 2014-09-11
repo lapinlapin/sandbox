@@ -1,3 +1,4 @@
 block('content')(
+    tag()('li'),
     js()(true)
 );

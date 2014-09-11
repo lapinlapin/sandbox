@@ -1,0 +1,3 @@
+block('tabs').elem('link')(
+    tag()('a')
+);
