@@ -38,6 +38,17 @@
                     block : 'tabs',
                     content : [
                         {
+                            title : 'CSS'
+                        },
+                        {
+                            title : 'JS'
+                        }
+                    ]
+                },
+                {
+                    block : 'tabs',
+                    content : [
+                        {
                             title : 'BEMHTML'
                         },
                         {
@@ -49,10 +60,7 @@
                     block : 'tabs',
                     content : [
                         {
-                            title : 'CSS'
-                        },
-                        {
-                            title : 'JS'
+                            title : 'BEMTREE'
                         }
                     ]
                 }
