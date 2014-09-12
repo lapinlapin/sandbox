@@ -17,8 +17,9 @@
             block : 'header',
             content : [
                 {
-                    elem : 'title',
-                    content : 'SANDBOX'
+                    block : 'button',
+                    mods : { theme : 'normal', size : 'l' },
+                    text : 'Просмотр'
                 }
             ]
         },
