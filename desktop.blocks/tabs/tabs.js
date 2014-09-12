@@ -15,6 +15,11 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
             this.blocksWithContent.forEach(function(block) {
                 block.delMod('selected');
             });
+
+            this.findElem('tab').each(function(key, elem) {
+                   this.delMod($(elem), 'selected');
+            }.bind(this))
+
             return this;
         },
 
@@ -28,6 +33,7 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
         live : function() {
             this.liveBindTo('tab', 'click', function(e) {
                 this._onClick($(e.currentTarget).text());
+                this.setMod(e.currentTarget, 'selected');
             });
         }
     }));

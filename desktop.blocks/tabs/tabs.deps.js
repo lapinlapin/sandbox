@@ -5,6 +5,11 @@
             elem : 'tab'
         },
         {
+            block : 'tabs',
+            elem : 'tab',
+            mods : { selected : true }
+        },
+        {
             block : 'tabContent'
         },
         {
