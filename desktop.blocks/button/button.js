@@ -6,12 +6,13 @@ modules.define('button', ['i-bem__dom', 'jquery'],
         onSetMod : {
             'js' : {
                 'inited' : function() {
-                }
+
+                 }
             }
         },
 
         _onClick : function() {
-            alert('привет это кнопка');
+            this.emit('click');
         }
 
     }, {
