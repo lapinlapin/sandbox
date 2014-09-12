@@ -18,6 +18,6 @@
         {
             block : 'content',
             mods: { selected : true }
-        },
+        }
     ]
 })
