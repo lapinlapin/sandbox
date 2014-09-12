@@ -1,8 +1,8 @@
 .tabs
 {
-    display: inline-block;
+    /*display: inline-block;*/
 
-    width: 24%;
+    /*width: 100%; /*24*/
 
     padding: 0;
     margin-right: 3px;
