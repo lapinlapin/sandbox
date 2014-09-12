@@ -1,5 +1,6 @@
-block('tabs') (
+block('tabs')(
     tag()('ul'),
+    js()(true),
     content()(function() {
         var tabs = [],
             content = [];
@@ -7,16 +8,13 @@ block('tabs') (
         tabs.push(this.ctx.content.map(function(elem) {
             content.push({
                 block : 'content',
+                mix : [{ mods : { 'box' : elem.title }}],
                 attrs : { id : elem.title }
             });
 
             return {
                 elem : 'tab',
-                content : {
-                    elem : 'link',
-                    attrs : { 'href' : '#' + elem.title },
-                    content : elem.title
-                }
+                content : elem.title
             }
         }));
 
@@ -27,4 +25,4 @@ block('tabs') (
 
         return tabs;
     })
-)
+);

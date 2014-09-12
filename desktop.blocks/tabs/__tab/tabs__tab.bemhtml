@@ -1,3 +1,4 @@
 block('tabs').elem('tab')(
-    tag()('li')
+    tag()('li'),
+    js()(true)
 );

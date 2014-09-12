@@ -30,7 +30,7 @@
                     block : 'tabs',
                     content : [
                         {
-                            title : 'BEMJSON'
+                            title : 'BEMJSON',
                         }
                     ]
                 },
@@ -38,7 +38,7 @@
                     block : 'tabs',
                     content : [
                         {
-                            title : 'CSS'
+                            title : 'CSS',
                         },
                         {
                             title : 'JS'
@@ -49,7 +49,7 @@
                     block : 'tabs',
                     content : [
                         {
-                            title : 'BEMHTML'
+                            title : 'BEMHTML',
                         },
                         {
                             title : 'BH'

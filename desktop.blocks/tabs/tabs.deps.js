@@ -2,13 +2,17 @@
     shouldDeps : [
         {
             block : 'tabs',
-            elems : ['tab', 'link']
+            elem : 'tab'
         },
         {
             block : 'tabContent'
         },
         {
             block : 'content'
-        }
+        },
+        {
+            block : 'content',
+            mods: { selected : true }
+        },
     ]
 })
