@@ -9,4 +9,10 @@
     border: 1px solid #ccc;
 
     padding-left: 10px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    z-index: 1000;
 }
