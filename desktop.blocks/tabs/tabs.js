@@ -7,7 +7,6 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
             'js' : {
                 'inited' : function() {
                     this.blocksWithContent = this.findBlocksInside('content');
-                    this.tabCount = this.elem('tab').length;
                 }
             }
         },
@@ -19,7 +18,7 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
 
             this.elem('tab').each(function(key, elem) {
                 this.delMod($(elem), 'selected');
-            }.bind(this))
+            }.bind(this));
 
             return this;
         },
@@ -33,9 +32,11 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
     }, {
         live : function() {
             this.liveBindTo('tab', 'click', function(e) {
-                if(this.tabCount > 1) {
-                    this._onClick($(e.currentTarget).text());
-                    this.setMod(e.currentTarget, 'selected');
+                var target = e.currentTarget;
+
+                if(this.elem('tab_selected')[0] !== e.currentTarget[0]) {  // нормально ли?
+                    this._onClick($(target).text());
+                    this.setMod(target, 'selected');
                 }
             });
         }
