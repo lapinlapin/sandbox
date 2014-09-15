@@ -26,46 +26,55 @@
             ]
         },
         {
-            block : 'options',
-            name : 'tab1',
+            block : 'wrapper',
             content : [
                 {
-                    block : 'tabs',
+                    block : 'options',
+                    name : 'tab1',
                     content : [
                         {
-                            title : 'BEMJSON'
-                        }
-                    ]
-                },
-                {
-                    block : 'tabs',
-                    content : [
-                        {
-                            title : 'CSS'
+                            block : 'tabs',
+                            content : [
+                                {
+                                    title : 'BEMJSON'
+                                }
+                            ]
                         },
                         {
-                            title : 'JS'
-                        }
-                    ]
-                },
-                {
-                    block : 'tabs',
-                    content : [
-                        {
-                            title : 'BEMHTML'
+                            block : 'tabs',
+                            content : [
+                                {
+                                    title : 'CSS'
+                                },
+                                {
+                                    title : 'JS'
+                                }
+                            ]
                         },
                         {
-                            title : 'BH'
+                            block : 'tabs',
+                            content : [
+                                {
+                                    title : 'BEMHTML'
+                                },
+                                {
+                                    title : 'BH'
+                                }
+                            ]
+                        },
+                        {
+                            block : 'tabs',
+                            content : [
+                                {
+                                    title : 'BEMTREE'
+                                }
+                            ]
                         }
                     ]
                 },
                 {
-                    block : 'tabs',
-                    content : [
-                        {
-                            title : 'BEMTREE'
-                        }
-                    ]
+                    block : 'preview',
+                    content : 'Превью'
                 }
             ]
         }

@@ -1,0 +1,12 @@
+.preview
+{
+    width: 30%;
+    height: 200px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+    display: inline-block;
+
+    overflow: hidden;
+}
