@@ -73,8 +73,7 @@
                     ]
                 },
                 {
-                    block : 'preview',
-                    content : 'Превью'
+                    block : 'preview'
                 }
             ]
         }

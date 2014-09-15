@@ -19,7 +19,7 @@ block('tabs')(
                 elem : 'tab',
                 elemMods : selected,
                 content : elem.title
-            }
+            };
         }));
 
         tabs.push({
