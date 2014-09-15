@@ -6,7 +6,8 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var preview = this.findBlockInside('preview').domElem;
+                        var preview = this.findBlockInside('preview').domElem,
+                            sandbox = this.domElem;
 
                         this._content = this.findBlocksInside('content');
                         this._fn = {
@@ -14,7 +15,7 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                                 preview.append(BEMHTML.apply(new Function('return ' + bemjson)()));
                             }.bind(this),
                             JS : function(js) {
-                                $('head').append('<script type="text/javascript">' + js + '</script>');
+                                sandbox.append('<script>' + js + '</script>');
                             }
                         };
                     }
@@ -26,6 +27,7 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                 this._content.forEach(function(content) {
                     var val = content.getVal();
+                    
                     if(val) {
                         values[content._type] = val;
                     }
