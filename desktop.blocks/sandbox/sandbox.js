@@ -6,18 +6,37 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod : {
                 'js' : {
                     'inited' : function() {
+                        var domElem = this.domElem;
+
                         this._content = this.findBlocksInside('content');
+                        this._fn = {
+                            BEMJSON : function(bemjson) {
+                                BEMDOM.append(domElem, BEMHTML.apply(new Function('return ' + bemjson)()));
+                            }
+                        };
                     }
                 }
             },
 
-            _reDraw : function() {
-                var info = {};
+            _getInfo : function() {
+                var values = {};
 
                 this._content.forEach(function(content) {
-                    info[content._type] = content.getVal();
+                    var val = content.getVal();
+                    if(val) {
+                        values[content._type] = val;
+                    }
                 });
-                BEMDOM.append(this.domElem, BEMHTML.apply(new Function('return ' + info.BEMJSON)()));
+                return info;
+            },
+
+            _reDraw : function() {
+                var values = this._getInfo(),
+                    fn = this._fn;
+
+                Object.keys(values).forEach(function(type) {
+                    fn[type](values[type]);
+                });
             }
 
         }, {
