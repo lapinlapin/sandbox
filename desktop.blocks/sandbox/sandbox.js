@@ -27,7 +27,7 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         values[content._type] = val;
                     }
                 });
-                return info;
+                return values;
             },
 
             _reDraw : function() {
@@ -35,8 +35,14 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     fn = this._fn;
 
                 Object.keys(values).forEach(function(type) {
-                    fn[type](values[type]);
+                    if(type === 'BEMJSON') fn[type](values[type]);
                 });
+
+                if(values['JS']) this._addScript(values['JS']);
+            },
+
+            _addScript : function(code) {
+                $('head').append('<script type="text/javascript">' + code + '</script>');
             }
 
         }, {
