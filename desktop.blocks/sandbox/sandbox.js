@@ -13,7 +13,7 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         this._fn = {
                             BEMJSON : function(bemjson) {
                                 preview.append(BEMHTML.apply(new Function('return ' + bemjson)()));
-                            }.bind(this),
+                            },
                             JS : function(js) {
                                 sandbox.append('<script>' + js + '</script>');
                             }
@@ -27,7 +27,7 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
 
                 this._content.forEach(function(content) {
                     var val = content.getVal();
-                    
+
                     if(val) {
                         values[content._type] = val;
                     }
