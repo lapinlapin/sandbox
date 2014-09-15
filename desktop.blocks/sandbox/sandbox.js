@@ -6,12 +6,15 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var domElem = this.domElem;
+                        var preview = this.findBlockInside('preview').domElem;
 
                         this._content = this.findBlocksInside('content');
                         this._fn = {
                             BEMJSON : function(bemjson) {
-                                BEMDOM.append(domElem, BEMHTML.apply(new Function('return ' + bemjson)()));
+                                preview.append(BEMHTML.apply(new Function('return ' + bemjson)()));
+                            }.bind(this),
+                            JS : function(js) {
+                                $('head').append('<script type="text/javascript">' + js + '</script>');
                             }
                         };
                     }
@@ -35,14 +38,8 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                     fn = this._fn;
 
                 Object.keys(values).forEach(function(type) {
-                    if(type === 'BEMJSON') fn[type](values[type]);
+                    fn[type](values[type]);
                 });
-
-                if(values['JS']) this._addScript(values['JS']);
-            },
-
-            _addScript : function(code) {
-                $('head').append('<script type="text/javascript">' + code + '</script>');
             }
 
         }, {
