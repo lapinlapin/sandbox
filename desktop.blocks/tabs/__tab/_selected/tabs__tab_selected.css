@@ -1,6 +1,6 @@
 .tabs__tab_selected
 {
     border-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 5px 1px #fc0; /*fc0*/
     background: #fc0;
+    box-shadow: 0 0 5px 1px #fc0;
 }

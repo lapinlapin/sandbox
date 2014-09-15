@@ -1,21 +1,20 @@
 .tabs__tab
 {
-    list-style-type: none;
+    line-height: 36px;
 
     display: inline-block;
 
+    height: 36px;
     margin-right: 1px;
     padding: 0 7px;
 
-    height: 36px;
-    line-height: 36px;
-
-    background: #ffeba0;
-
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    list-style-type: none;
 
     cursor: pointer;
+
+    background: #ffeba0;
+    border-radius: 4px 4px 0 0;
+
 }
 
 .tabs__tab:hover

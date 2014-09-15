@@ -1,6 +1,7 @@
 .header__title
 {
     font: bold 16px Arial;
-    color: #000;
     line-height: 50px;
+
+    color: #000;
 }
