@@ -19,7 +19,7 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
 
             this.elem('tab').each(function(key, elem) {
                 this.delMod($(elem), 'selected');
-            }.bind(this));
+            }.bind(this))
 
             return this;
         },
