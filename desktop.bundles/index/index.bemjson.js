@@ -13,7 +13,7 @@
         { elem: 'js', url: 'index/index.bemhtml.js' }
     ],
     mods: { theme: 'normal' },
-    mix: { block: 'sandbox', js: true },
+    mix: { block: 'collector', js: true },
     content: [
         {
             block : 'header',
@@ -73,7 +73,8 @@
                     ]
                 },
                 {
-                    block : 'preview'
+                    block : 'preview',
+                    attrs : { src : 'second/second.html' }
                 }
             ]
         }

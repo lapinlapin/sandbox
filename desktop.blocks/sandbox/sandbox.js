@@ -1,18 +1,14 @@
-modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
+modules.define('sandbox', ['i-bem__dom', 'jquery'],
 
-    function(provide, BEMDOM, $, BEMHTML) {
+    function(provide, BEMDOM, $) {
 
         provide(BEMDOM.decl({ block : this.name }, {
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var preview = this.findBlockInside('preview').domElem,
-                            sandbox = this.domElem;
-
-                        this._content = this.findBlocksInside('content');
                         this._fn = {
                             BEMJSON : function(bemjson) {
-                                preview.append(BEMHTML.apply(new Function('return ' + bemjson)()));
+                                return BEMHTML.apply(new Function('return ' + bemjson)());
                             },
                             JS : function(js) {
                                 sandbox.append('<script>' + js + '</script>');
@@ -20,33 +16,16 @@ modules.define('sandbox', ['i-bem__dom', 'jquery', 'BEMHTML'],
                         };
                     }
                 }
-            },
-
-            _getInfo : function() {
-                var values = {};
-
-                this._content.forEach(function(content) {
-                    var val = content.getVal();
-
-                    if(val) {
-                        values[content._type] = val;
-                    }
-                });
-                return values;
-            },
-
-            _reDraw : function() {
-                var values = this._getInfo(),
-                    fn = this._fn;
-
-                Object.keys(values).forEach(function(type) {
-                    fn[type](values[type]);
-                });
             }
 
         }, {
             live : function() {
-                this.liveInitOnBlockInsideEvent('click', 'button', this.prototype._reDraw);
+                /*this.liveBindTo('click', function() {
+                    this._onClick();
+                });*/
+                window.addEventListener('message', function() {
+                      console.log(event.data);
+                });
             }
         }));
 
