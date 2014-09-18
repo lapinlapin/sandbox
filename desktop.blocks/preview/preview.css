@@ -1,15 +1,12 @@
 .preview
 {
-
     position: fixed;
     right: 0;
     top: 50px;
-
-    overflow: hidden;
 
     box-sizing: border-box;
     width: 30%;
     padding: 10px;
 
-    border: 0;
+    border: none;
 }
