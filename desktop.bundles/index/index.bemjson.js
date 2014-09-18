@@ -9,8 +9,7 @@
     ],
     scripts: [
         { elem: 'js', url: 'index/_index.js' },
-        { elem: 'js', url: 'http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js' },
-        { elem: 'js', url: 'index/index.bemhtml.js' }
+        { elem: 'js', url: 'http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js' }
     ],
     mods: { theme: 'normal' },
     mix: { block: 'collector', js: true },

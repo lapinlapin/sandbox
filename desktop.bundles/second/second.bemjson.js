@@ -7,8 +7,8 @@
         { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } }
     ],
     scripts: [
-        { elem: 'js', url: '_second.js' },
-        { elem: 'js', url: 'second.bemhtml.js' }
+        { elem: 'js', url: 'second.bemhtml.js' },
+        { elem: 'js', url: '_second.js' }
     ],
     mods: { theme: 'normal' },
     mix : { block : 'sandbox', js : true }

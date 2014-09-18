@@ -1,6 +1,6 @@
-modules.define('collector', ['i-bem__dom', 'jquery', 'BEMHTML'],
+modules.define('collector', ['i-bem__dom', 'jquery', 'i-bem'],
 
-    function(provide, BEMDOM, $, BEMHTML) {
+    function(provide, BEMDOM, $, BEM) {
 
         provide(BEMDOM.decl({ block : this.name }, {
             onSetMod : {
@@ -35,19 +35,34 @@ modules.define('collector', ['i-bem__dom', 'jquery', 'BEMHTML'],
                 return values;
             },
 
-            _sendInfo : function() {
-                //var values = this._getInfo(),
+            sendInfo : function() {
+                var values = this._getInfo();
                    // fn = this._fn;
 
                /* Object.keys(values).forEach(function(type) {
                     fn[type](values[type]);
                 });*/
-                this.findBlockInside('preview').domElem[0].contentWindow.postMessage(this._getInfo(), window.location);
+                if (values['BEMJSON']){
+                    this.findBlockInside('preview').domElem[0].contentWindow.postMessage(this._getInfo(), window.location);
+                }
+                if (values['JS']) {
+                //.append('<script>' + js + '</script>');
+                var blocks = BEM.blocks;
+                var a = "$('.preview')[0].contentWindow." + values['JS'];
+                eval(a);
+
+                BEM.blocks.forEach(function(block) {
+                    if(blocks.indexOf(block) === -1) {
+                        modules.require(block, function(){});
+                    }
+                });
+
+                }
             }
 
         }, {
             live : function() {
-                this.liveInitOnBlockInsideEvent('click', 'button', this.prototype._sendInfo);
+                this.liveInitOnBlockInsideEvent('click', 'button', this.prototype.sendInfo);
             }
         }));
 
