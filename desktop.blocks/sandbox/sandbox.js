@@ -6,7 +6,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var sandbox = this.domElem,
+                        var sandbox = this._sandbox = this.domElem,
                             init = "modules.require(" +
                                         "['i-bem__dom_init', 'jquery', 'next-tick']," +
                                         "function(init, $, nextTick) {" +
@@ -19,7 +19,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                         this._fn = {
                             BEMJSON : function(bemjson) {
                                 //BEMDOM.append(sandbox, BEMHTML.apply(new Function('return ' + bemjson)()));
-                                sandbox.html(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
+                                sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
                             },
 
                             JS : function(js) {
@@ -41,6 +41,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                     fn = this._fn;
 
                 if(data) {
+                    BEMDOM.destruct(this._sandbox, true);
                     Object.keys(data).forEach(function(type) {
                         fn[type](data[type]);
                     });
