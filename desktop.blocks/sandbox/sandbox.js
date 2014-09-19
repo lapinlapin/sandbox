@@ -8,19 +8,18 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                     'inited' : function() {
                         var sandbox = this.domElem,
                             init = "modules.require(" +
-                                            "['i-bem__dom_init', 'jquery', 'next-tick']," +
-                                            "function(init, $, nextTick) {" +
-                                                "$(function() {" +
-                                                    "nextTick(init);" +
-                                                "});" +
-                                            "}" +
-                                        ");";
+                                        "['i-bem__dom_init', 'jquery', 'next-tick']," +
+                                        "function(init, $, nextTick) {" +
+                                            "$(function() {" +
+                                                "nextTick(init);" +
+                                            "});" +
+                                        "}" +
+                                    ");";
 
                         this._fn = {
-
                             BEMJSON : function(bemjson) {
                                 //BEMDOM.append(sandbox, BEMHTML.apply(new Function('return ' + bemjson)()));
-                                sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
+                                sandbox.html(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
                             },
 
                             JS : function(js) {
@@ -41,7 +40,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                 var data = event.data.sandbox,
                     fn = this._fn;
 
-                if (data) {
+                if(data) {
                     Object.keys(data).forEach(function(type) {
                         fn[type](data[type]);
                     });

@@ -10,6 +10,14 @@ modules.define('content', ['i-bem__dom', 'jquery'],
                     this.editor = ace.edit(this._type);
                     this.editor.setTheme("ace/theme/clouds");
                     this.editor.getSession().setMode("ace/mode/javascript");
+
+                    this.snippetTech = {
+                        BEMJSON : '{\n    block : \'block\'\n}\n',
+                        CSS : '.block\n{\n}\n',
+                        JS : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});"
+                    };
+
+                    this.editor.setValue(this.snippetTech[this._type]);
                 }
             }
         },
