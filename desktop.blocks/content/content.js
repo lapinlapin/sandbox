@@ -13,7 +13,7 @@ modules.define('content', ['i-bem__dom', 'jquery'],
                     this.editor.setShowPrintMargin(false);
 
                     this.snippetTech = {
-                        BEMJSON : '{\n    block : \'block\'\n}\n',
+                        BEMJSON : '[\n    {\n        block : \'block\'\n    }\n]\n',
                         CSS : '.block\n{\n}\n',
                         JS : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});"
                     };
