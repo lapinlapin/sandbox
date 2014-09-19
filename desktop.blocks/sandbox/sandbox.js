@@ -1,35 +1,43 @@
-modules.define('sandbox', ['jquery', 'i-bem__dom'/*, 'BEMHTML'*/],
+modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
 
-    function(provide, $, BEMDOM/*, BEMHTML*/) {
+    function(provide, BEMDOM/*, BEMHTML*/) {
 
         provide(BEMDOM.decl({ block : this.name }, {
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var sandbox = this.domElem;
+                        var sandbox = this.domElem,
+                            init = "modules.require(" +
+                                            "['i-bem__dom_init', 'jquery', 'next-tick']," +
+                                            "function(init, $, nextTick) {" +
+                                                "$(function() {" +
+                                                    "nextTick(init);" +
+                                                "});" +
+                                            "}" +
+                                        ");";
 
                         this._fn = {
                             BEMJSON : function(bemjson) {
-                                //sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)()));
-                                BEMDOM.init($(BEMHTML.apply(new Function('return ' + bemjson)())).appendTo(sandbox))
+                                //BEMDOM.append(sandbox, BEMHTML.apply(new Function('return ' + bemjson)()));
+                                sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
                             },
                             JS : function(js) {
-                                sandbox.append('<script>' + js + '</script>');
+                                sandbox.append('<script>' + js + init + '</script>');
                             }
                         };
+
                         window.addEventListener('message', this.reDraw.bind(this));
                     }
                 }
             },
             reDraw : function() {
-                var data = event.data,
+                var data = event.data.sandbox,
                     fn = this._fn;
-                if (typeof data === 'object' && data['BEMJSON']) {
-                   // Object.keys(data).forEach(function(type) {
-                     //   fn[type](data[type]);
-                    //});
-                    fn['BEMJSON'](data['BEMJSON']);
-                  //  fn['JS'](data['JS']);
+
+                if (data) {
+                   Object.keys(data).forEach(function(type) {
+                        fn[type](data[type]);
+                   });
                 }
             }
     }));
