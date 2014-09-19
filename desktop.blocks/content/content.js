@@ -10,6 +10,7 @@ modules.define('content', ['i-bem__dom', 'jquery'],
                     this.editor = ace.edit(this._type);
                     this.editor.setTheme("ace/theme/clouds");
                     this.editor.getSession().setMode("ace/mode/javascript");
+                    this.editor.setShowPrintMargin(false);
 
                     this.snippetTech = {
                         BEMJSON : '{\n    block : \'block\'\n}\n',
