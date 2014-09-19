@@ -24,7 +24,7 @@ modules.define('content', ['i-bem__dom', 'jquery'],
 
                         JS : {
                             syntax : 'javascript',
-                            snippet : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});\n"
+                            snippet : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n        \n    }, {\n        \n    })); \n});\n"
                         }/*,
 
                         BEMHTML : {
