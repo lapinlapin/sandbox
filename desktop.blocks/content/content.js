@@ -8,18 +8,35 @@ modules.define('content', ['i-bem__dom', 'jquery'],
                 'inited' : function() {
                     this._type = this.domElem.attr('id');
                     this.editor = ace.edit(this._type);
-                    this.editor.setTheme("ace/theme/clouds");
-                    this.editor.getSession().setMode("ace/mode/javascript");
+                    this.editor.setTheme('ace/theme/clouds');
                     this.editor.setShowPrintMargin(false);
 
-                    this.snippetTech = {
-                        BEMJSON : '[\n    {\n        block : \'block\'\n    }\n]\n',
-                        CSS : '.block\n{\n    \n}\n',
-                        JS : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});\n",
-                        BEMHTML : "block('block')(\n    \n);\n"
+                    this.editorConf = {
+                        BEMJSON : {
+                            syntax : 'javascript',
+                            snippet : '[\n    {\n        block : \'block\'\n    }\n]\n'
+                        },
+
+                        CSS : {
+                            syntax : 'css',
+                            snippet : '.block\n{\n    \n}\n'
+                        },
+
+                        JS : {
+                            syntax : 'javascript',
+                            snippet : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});\n"
+                        }/*,
+
+                        BEMHTML : {
+                            //syntax : 'javascript',
+                            //snippet : "block('block')(\n    \n);\n"
+                        }*/
                     };
 
-                    this.editor.setValue(this.snippetTech[this._type]);
+                    if(this.editorConf[this._type]) {
+                        this.editor.getSession().setMode('ace/mode/' + this.editorConf[this._type].syntax);
+                        this.editor.setValue(this.editorConf[this._type].snippet);
+                    }
                 }
             }
         },
