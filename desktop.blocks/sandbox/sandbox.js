@@ -17,12 +17,18 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                                         ");";
 
                         this._fn = {
+
                             BEMJSON : function(bemjson) {
                                 //BEMDOM.append(sandbox, BEMHTML.apply(new Function('return ' + bemjson)()));
                                 sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
                             },
+
                             JS : function(js) {
                                 sandbox.append('<script>' + js + init + '</script>');
+                            },
+
+                            CSS : function(css) {
+                                sandbox.append('<style type="text/css">' + css + '</style>')
                             }
                         };
 
@@ -30,14 +36,15 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                     }
                 }
             },
+
             reDraw : function() {
                 var data = event.data.sandbox,
                     fn = this._fn;
 
                 if (data) {
-                   Object.keys(data).forEach(function(type) {
+                    Object.keys(data).forEach(function(type) {
                         fn[type](data[type]);
-                   });
+                    });
                 }
             }
     }));
