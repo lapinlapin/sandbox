@@ -14,8 +14,9 @@ modules.define('content', ['i-bem__dom', 'jquery'],
 
                     this.snippetTech = {
                         BEMJSON : '[\n    {\n        block : \'block\'\n    }\n]\n',
-                        CSS : '.block\n{\n}\n',
-                        JS : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});"
+                        CSS : '.block\n{\n    \n}\n',
+                        JS : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n\n    }, {\n\n    })); \n});\n",
+                        BEMHTML : "block('block')(\n    \n);\n"
                     };
 
                     this.editor.setValue(this.snippetTech[this._type]);
