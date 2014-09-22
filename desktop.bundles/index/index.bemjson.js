@@ -5,11 +5,11 @@
     head: [
         { elem: 'meta', attrs: { name: 'description', content: '' } },
         { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } },
-        { elem: 'css', url: 'index/_index.css' }
+        { elem: 'css', url: '_index.css' }
     ],
     scripts: [
-        { elem: 'js', url: 'index/_index.js' },
-        { elem: 'js', url: 'http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js' }
+        { elem: 'js', url: '_index.js' },
+        { elem: 'js', url: '_ace.js' }
     ],
     mods: { theme: 'normal' },
     mix: { block: 'collector', js: true },
@@ -73,7 +73,7 @@
                 },
                 {
                     block : 'preview',
-                    attrs : { src : 'second/second.html' }
+                    attrs : { src : '../second/second.html' }
                 }
             ]
         }
