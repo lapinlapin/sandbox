@@ -1,0 +1,3 @@
+if (g.extendTemplates) {
+    extendTemplates(apply, applyNext, applyCtx, block, elem, tag, attrs, cls, js, jsAttr, bem, mix, content);
+}

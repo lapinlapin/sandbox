@@ -28,6 +28,11 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
 
                             CSS : function(css) {
                                 sandbox.append('<style type="text/css">' + css + '</style>')
+                            },
+                            BEMHTML : function(bemhtml) {
+                                sandbox.append('<script>' + 'function extendTemplates(' +
+                                    'apply, applyNext, applyCtx, block, elem, tag, attrs, cls, js, jsAttr, bem, mix, content){' +
+                                    '' + bemhtml + '}' + '</script>');
                             }
                         };
 
@@ -42,7 +47,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
 
                 if(data) {
                     BEMDOM.destruct(this._sandbox, true);
-                    Object.keys(data).forEach(function(type) {
+                    Object.keys(data).sort().forEach(function(type) {
                         fn[type](data[type]);
                     });
                 }
