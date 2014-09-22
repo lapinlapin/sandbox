@@ -9,7 +9,7 @@
     ],
     scripts: [
         { elem: 'js', url: '_index.js' },
-        { elem: 'js', url: '_ace.js' }
+        { elem: 'js', url: '/_ace.js' }
     ],
     mods: { theme: 'normal' },
     mix: { block: 'collector', js: true },
