@@ -34,7 +34,7 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
             this.liveBindTo('tab', 'click', function(e) {
                 var target = e.currentTarget;
 
-                if(this.elem('tab_selected')[0] !== e.currentTarget[0]) {  // нормально ли?
+                if(this.elem('tab', 'selected', true)[0] !== e.currentTarget[0]) {
                     this._onClick($(target).text());
                     this.setMod(target, 'selected');
                 }
