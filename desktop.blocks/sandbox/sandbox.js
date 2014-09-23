@@ -1,6 +1,6 @@
-modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
+modules.define('sandbox', ['i-bem__dom'],
 
-    function(provide, BEMDOM/*, BEMHTML*/) {
+    function(provide, BEMDOM) {
 
         provide(BEMDOM.decl({ block : this.name }, {
             onSetMod : {
@@ -45,6 +45,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
 
                 if(data) {
                     BEMDOM.destruct(this._sandbox, true);
+                    window.extendTemplates = function() {};
                     Object.keys(data).sort().forEach(function(type) {
                         fn[type](data[type]);
                     });

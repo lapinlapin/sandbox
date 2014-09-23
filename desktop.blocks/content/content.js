@@ -1,6 +1,6 @@
-modules.define('content', ['i-bem__dom', 'jquery'],
+modules.define('content', ['i-bem__dom'],
 
-    function(provide, BEMDOM, $) {
+    function(provide, BEMDOM) {
 
     provide(BEMDOM.decl({ block : this.name }, {
         onSetMod : {
