@@ -7,7 +7,7 @@ modules.define('collector', ['i-bem__dom'],
                 'js' : {
                     'inited' : function() {
                         this._content = this.findBlocksInside('content');
-                        this._editorConf = this._content[0].editorConf;
+                        this._editorConf = this._content[0].__self.editorConf;
                         this._preview = this.findBlockInside('preview').domElem[0].contentWindow;
                     }
                 }
