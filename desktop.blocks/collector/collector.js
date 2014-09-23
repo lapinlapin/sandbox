@@ -7,6 +7,7 @@ modules.define('collector', ['i-bem__dom'],
                 'js' : {
                     'inited' : function() {
                         this._content = this.findBlocksInside('content');
+                        this._editorConf = this._content[0].editorConf;
                         this._preview = this.findBlockInside('preview').domElem[0].contentWindow;
                     }
                 }
@@ -18,15 +19,24 @@ modules.define('collector', ['i-bem__dom'],
                 this._content.forEach(function(content) {
                     var val = content.getVal();
 
-                    if(val) {
+                    if(val && val !== this._editorConf[content._type].snippet) {
                         values[content._type] = val;
                     }
-                });
+                }.bind(this));
+
                 return values;
             },
 
             sendInfo : function() {
-                this._preview.postMessage({ sandbox : this._getInfo() }, window.location);
+                var values = this._getInfo();
+
+                if(values) {
+                    this._preview.postMessage({
+                        sandbox : values
+                    }, window.location);
+                }
+
+                return this;
             }
 
         }, {

@@ -18,8 +18,7 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
 
                         this._fn = {
                             BEMJSON : function(bemjson) {
-                                //BEMDOM.append(sandbox, BEMHTML.apply(new Function('return ' + bemjson)()));
-                                sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)())); // ??
+                                sandbox.append(BEMHTML.apply(new Function('return ' + bemjson)()));
                             },
 
                             JS : function(js) {
@@ -35,7 +34,6 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                                     '' + bemhtml + '}' + '</script>');
                             }
                         };
-
                         window.addEventListener('message', this.reDraw.bind(this));
                     }
                 }
@@ -50,6 +48,8 @@ modules.define('sandbox', ['i-bem__dom'/*, 'BEMHTML'*/],
                     Object.keys(data).sort().forEach(function(type) {
                         fn[type](data[type]);
                     });
+
+                    return this;
                 }
             }
     }));

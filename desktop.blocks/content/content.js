@@ -14,22 +14,22 @@ modules.define('content', ['i-bem__dom', 'jquery'],
                     this.editorConf = {
                         BEMJSON : {
                             syntax : 'javascript',
-                            snippet : '[\n    {\n        block : \'block\'\n    }\n]\n'
+                            snippet : '[\n    {\n        block : \'\'\n    }\n]\n'
                         },
 
                         CSS : {
                             syntax : 'css',
-                            snippet : '.block\n{\n    \n}\n'
+                            snippet : '. \n{\n    \n}\n'
                         },
 
                         JS : {
                             syntax : 'javascript',
-                            snippet : "modules.define('block', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n        \n    }, {\n        \n    })); \n});\n"
+                            snippet : "modules.define('', ['i-bem__dom', 'jquery'], function(provide, BEMDOM, $) {\n    provide(BEMDOM.decl({ block : this.name }, {\n        \n    }, {\n        \n    })); \n});\n"
                         },
 
                         BEMHTML : {
                             syntax : 'javascript',
-                            snippet : "block('block')(\n    \n);\n"
+                            snippet : "block('')(\n    \n);\n"
                         }
                     };
 
