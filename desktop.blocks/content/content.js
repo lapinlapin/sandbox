@@ -6,16 +6,17 @@ modules.define('content', ['i-bem__dom'],
         onSetMod : {
             'js' : {
                 'inited' : function() {
-                    var editorConf = this.__self.editorConf;
+                    var editorsConf = this.__self.editorConf,
+                        type = this._type = this.domElem.attr('id'),
+                        editor = this.editor = ace.edit(type),
+                        conf = editorsConf[type];
 
-                    this._type = this.domElem.attr('id');
-                    this.editor = ace.edit(this._type);
-                    this.editor.setTheme('ace/theme/clouds');
-                    this.editor.setShowPrintMargin(false);
+                    editor.setTheme('ace/theme/clouds');
+                    editor.setShowPrintMargin(false);
 
-                    if(editorConf[this._type]) {
-                        this.editor.getSession().setMode('ace/mode/' + editorConf[this._type].syntax);
-                        this.editor.setValue(editorConf[this._type].snippet);
+                    if(conf) {
+                        editor.getSession().setMode('ace/mode/' + conf.syntax);
+                        editor.setValue(conf.snippet);
                     }
                 }
             }
