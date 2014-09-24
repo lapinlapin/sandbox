@@ -5,11 +5,14 @@
     head: [
         { elem: 'meta', attrs: { name: 'description', content: '' } },
         { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } },
-        { elem: 'css', url: '_index.css' }
+        { elem: 'css', url: '_index.css' },
+        { elem: 'js', url: '/_ace.js' },
+        { elem: 'js', url: '/mode-css.js' },
+        { elem: 'js', url: '/mode-javascript.js' },
+        { elem: 'js', url: '/theme-clouds.js'}
     ],
     scripts: [
-        { elem: 'js', url: '_index.js' },
-        { elem: 'js', url: '/_ace.js' }
+        { elem: 'js', url: '_index.js' }
     ],
     mods: { theme: 'normal' },
     mix: { block: 'collector', js: true },
