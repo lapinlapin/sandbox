@@ -11,31 +11,29 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
             }
         },
 
-        _clearSelected : function() {
+        _clearSelected : function(selectedTab) {
             this.blocksWithContent.forEach(function(block) {
                 block.delMod('selected');
             });
-
-            this.elem('tab').each(function(key, elem) {
-                this.delMod($(elem), 'selected');
-            }.bind(this));
+            this.delMod(selectedTab, 'selected');
 
             return this;
         },
 
-        _onClick : function(title) {
+        _onClick : function(title, selectedTab) {
             this
-                ._clearSelected()
+                ._clearSelected(selectedTab)
                 .findBlockInside({ block : 'content', modName : 'box', modVal : title }).setMod('selected');
         }
 
     }, {
         live : function() {
             this.liveBindTo('tab', 'click', function(e) {
-                var target = e.currentTarget;
+                var target = e.currentTarget,
+                    selectedTab = this.elem('tab', 'selected', true);
 
-                if(this.elem('tab', 'selected', true)[0] !== e.currentTarget[0]) {
-                    this._onClick($(target).text());
+                if(selectedTab[0] !== target[0]) {
+                    this._onClick($(target).text(), selectedTab);
                     this.setMod(target, 'selected');
                 }
             });
