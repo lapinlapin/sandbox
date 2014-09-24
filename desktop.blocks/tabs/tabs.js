@@ -1,21 +1,14 @@
-modules.define('tabs', ['i-bem__dom', 'jquery'],
+modules.define('tabs', ['i-bem__dom'],
 
-    function(provide, BEMDOM, $) {
+    function(provide, BEMDOM) {
 
     provide(BEMDOM.decl({ block : this.name }, {
-        onSetMod : {
-            'js' : {
-                'inited' : function() {
-                    this.blocksWithContent = this.findBlocksInside('content');
-                }
-            }
-        },
-
         _clearSelected : function(selectedTab) {
-            this.blocksWithContent.forEach(function(block) {
-                block.delMod('selected');
-            });
-            this.delMod(selectedTab, 'selected');
+            this
+                .delMod(selectedTab, 'selected')
+                .findBlocksInside('content').forEach(function(block) {
+                    block.delMod('selected');
+                });
 
             return this;
         },
@@ -24,6 +17,8 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
             this
                 ._clearSelected(selectedTab)
                 .findBlockInside({ block : 'content', modName : 'box', modVal : title }).setMod('selected');
+
+            return this;
         }
 
     }, {
@@ -33,8 +28,9 @@ modules.define('tabs', ['i-bem__dom', 'jquery'],
                     selectedTab = this.elem('tab', 'selected', true);
 
                 if(selectedTab[0] !== target[0]) {
-                    this._onClick($(target).text(), selectedTab);
-                    this.setMod(target, 'selected');
+                    this
+                        ._onClick(target.text(), selectedTab)
+                        .setMod(target, 'selected');
                 }
             });
         }
