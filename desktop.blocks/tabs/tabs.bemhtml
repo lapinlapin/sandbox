@@ -6,19 +6,20 @@ block('tabs')(
             content = [];
 
         tabs.push(this.ctx.content.map(function(elem, i) {
-            var selected = i === 0 ? { selected : true} : { selected : '' };
+            var selected = i === 0 ? { selected : true } : { selected : '' },
+                title = elem.title;
 
             content.push({
                 block : 'content',
                 mods: selected,
-                mix : [{ mods : { 'box' : elem.title }}],
-                attrs : { id : elem.title }
+                mix : [{ mods : { 'box' : title }}],
+                attrs : { id : title }
             });
 
             return {
                 elem : 'tab',
                 elemMods : selected,
-                content : elem.title
+                content : title
             };
         }));
 

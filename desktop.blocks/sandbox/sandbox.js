@@ -26,7 +26,7 @@ modules.define('sandbox', ['i-bem__dom'],
                             },
 
                             CSS : function(css) {
-                                sandbox.append('<style type="text/css">' + css + '</style>')
+                                sandbox.append('<style>' + css + '</style>')
                             },
                             BEMHTML : function(bemhtml) {
                                 sandbox.append('<script>' + 'function extendTemplates(' +

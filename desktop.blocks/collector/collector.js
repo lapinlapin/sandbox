@@ -17,11 +17,10 @@ modules.define('collector', ['i-bem__dom'],
                 var values = {};
 
                 this._content.forEach(function(content) {
-                    var val = content.getVal();
+                    var val = content.getVal(),
+                        type = content._type;
 
-                    if(val && val !== this._editorConf[content._type].snippet) {
-                        values[content._type] = val;
-                    }
+                    val && val !== this._editorConf[type].snippet && (values[type] = val);
                 }.bind(this));
 
                 return values;
@@ -30,11 +29,7 @@ modules.define('collector', ['i-bem__dom'],
             sendInfo : function() {
                 var values = this._getInfo();
 
-                if(values) {
-                    this._preview.postMessage({
-                        sandbox : values
-                    }, window.location);
-                }
+                values && this._preview.postMessage({ sandbox : values }, location);
 
                 return this;
             }

@@ -24,6 +24,7 @@ modules.define('content', ['i-bem__dom'],
         getVal : function() {
             return this.editor.getValue();
         }
+
     }, {
         editorConf : {
             BEMJSON : {
