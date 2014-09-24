@@ -6,7 +6,7 @@ modules.define('sandbox', ['i-bem__dom'],
             onSetMod : {
                 'js' : {
                     'inited' : function() {
-                        var sandbox = this._sandbox = this.domElem,
+                        var sandbox = this.domElem,
                             init = "modules.require(" +
                                         "['i-bem__dom_init', 'jquery', 'next-tick']," +
                                         "function(init, $, nextTick) {" +
@@ -44,7 +44,7 @@ modules.define('sandbox', ['i-bem__dom'],
                     fn = this._fn;
 
                 if(data) {
-                    BEMDOM.destruct(this._sandbox, true);
+                    BEMDOM.destruct(this.domElem, true);
                     window.extendTemplates = function() {};
                     Object.keys(data).sort().forEach(function(type) {
                         fn[type](data[type]);
