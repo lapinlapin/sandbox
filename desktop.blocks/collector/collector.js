@@ -29,7 +29,7 @@ modules.define('collector', ['i-bem__dom'],
             sendInfo : function() {
                 var values = this._getInfo();
 
-                values && this._preview.postMessage({ sandbox : values }, location);
+                Object.keys(values).length && this._preview.postMessage({ sandbox : values }, location);
 
                 return this;
             }
