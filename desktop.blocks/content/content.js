@@ -9,14 +9,16 @@ modules.define('content', ['i-bem__dom'],
                     var editorsConf = this.__self.editorConf,
                         type = this._type = this.domElem.attr('id'),
                         editor = this.editor = ace.edit(type),
-                        conf = editorsConf[type];
+                        conf = editorsConf[type],
+                        session = editor.getSession();
 
                     editor.setTheme('ace/theme/clouds');
                     editor.setShowPrintMargin(false);
+                    session.setUseWrapMode(true);
 
                     if(conf) {
-                        editor.getSession().setMode('ace/mode/' + conf.syntax);
-                        editor.setValue(conf.snippet);
+                        session.setMode('ace/mode/' + conf.syntax);
+                        editor.setValue(conf.snippet, -1);
                     }
                 }
             }

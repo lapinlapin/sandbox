@@ -34,7 +34,7 @@ modules.define('sandbox', ['i-bem__dom'],
                                     '' + bemhtml + '}' + '</script>');
                             }
                         };
-                        window.addEventListener('message', this.reDraw.bind(this));
+                        addEventListener('message', this.reDraw.bind(this));
                     }
                 }
             },
